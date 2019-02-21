@@ -1,0 +1,10 @@
+/storage
+/vendor
+.env
+
+nbproject
+.buildpath
+.idea
+.project
+.settings
+.vscode
