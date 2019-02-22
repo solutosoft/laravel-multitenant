@@ -3,10 +3,10 @@
 namespace Soluto\MultiTenant\Providers;
 
 use Illuminate\Auth\EloquentUserProvider;
-use Illuminate\Contracts\Auth\Authenticatable as UserContract;
 use Illuminate\Contracts\Hashing\Hasher as HasherContract;
 use Illuminate\Support\Str;
 use Soluto\MultiTenant\Database\TenantScope;
+use Illuminate\Contracts\Support\Arrayable;
 
 class TenantUserProvider extends EloquentUserProvider
 {
@@ -68,8 +68,8 @@ class TenantUserProvider extends EloquentUserProvider
             return;
         }
 
-        $query = $this->createModel()->newQuery();
-        $query = $this->prepareQuery($this->createModel()->newQuery());
+        $model = $this->createModel();
+        $query = $this->prepareQuery($model->newQuery());
 
         foreach ($credentials as $key => $value) {
             if (Str::contains($key, 'password')) {
