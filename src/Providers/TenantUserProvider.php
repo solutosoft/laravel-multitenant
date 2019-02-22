@@ -8,7 +8,7 @@ use Illuminate\Contracts\Hashing\Hasher as HasherContract;
 use Illuminate\Support\Str;
 use Soluto\MultiTenant\Database\TenantScope;
 
-class UserProvider extends EloquentUserProvider
+class TenantUserProvider extends EloquentUserProvider
 {
     /**
      * The name of the "password" attribute.

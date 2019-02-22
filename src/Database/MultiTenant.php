@@ -3,7 +3,7 @@
 
 namespace Soluto\MultiTenant\Database;
 
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 
 trait MultiTenant

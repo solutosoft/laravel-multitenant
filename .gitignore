@@ -1,10 +1,11 @@
-/storage
-/vendor
-.env
-
 nbproject
 .buildpath
 .idea
 .project
 .settings
 .vscode
+
+/storage
+/vendor
+
+composer.lock
