@@ -65,6 +65,10 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
             $table->increments('id');
             $table->string('firstName');
             $table->string('lastName');
+            $table->string('login')->nullable();
+            $table->string('password')->nullable();
+            $table->string('remember_token')->nullable();
+            $table->string('active');
             $table->integer('tenant_id')->unsigned()->nullable(true);
         });
     }
@@ -82,20 +86,36 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
                 'firstName' => 'Admin',
                 'lastName' => 'Administrator',
                 'tenant_id' => null,
+                'login' => 'admin',
+                'password' => 'admin',
+                'active' => true,
+                'remember_token' => 'token-admin'
             ],[
                 'id' => 2,
                 'firstName' => 'Tenant1',
                 'lastName' => 'Tenant1 Last Name',
+                'login' => 'tenant1',
+                'password' => 'tenant1',
+                'remember_token' => 'token-tenant1',
+                'active' => false,
                 'tenant_id' => 1,
             ],[
                 'id' => 3,
                 'firstName' => 'Tenant2',
                 'lastName' => 'Tenant2 Last Name',
+                'login' => 'tenant2',
+                'password' => 'tenant2',
+                'remember_token' => 'token-tenant2',
+                'active' => true,
                 'tenant_id' => 1
             ],[
                 'id' => 4,
                 'firstName' => 'SubTenant1',
                 'lastName' => 'SubTenant1 Last Name',
+                'login' => 'subtenant',
+                'password' => 'subtenant',
+                'remember_token' => 'token-subtenant',
+                'active' => true,
                 'tenant_id' => 2
             ]
         ]);

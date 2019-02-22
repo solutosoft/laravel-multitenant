@@ -1,6 +1,6 @@
 <?php
 
-namespace Soluto\MultiTenant\Test\Database;
+namespace Soluto\MultiTenant\Test;
 
 use Soluto\MultiTenant\Test\TestCase;
 use Soluto\MultiTenant\Test\Models\Person;
@@ -30,11 +30,13 @@ class MultiTenantTest extends TestCase
         $test = Person::create([
             'firstName' => 'Test',
             'lastName' => 'Test Last Name',
+            'active' => true
         ]);
 
         $forced = Person::forceCreate([
             'firstName' => 'Forced',
             'lastName' => 'Forced Last Name',
+            'active' => true,
             'tenant_id' => 2
         ]);
 
@@ -64,6 +66,7 @@ class MultiTenantTest extends TestCase
         $person = Person::forceCreate([
             'firstName' => 'Valid',
             'lastName' => 'With Guest User',
+            'active' => true,
             'tenant_id' => 1
         ]);
 
@@ -71,7 +74,8 @@ class MultiTenantTest extends TestCase
 
         Person::create([
             'firstName' => 'Exception',
-            'lastName' => 'People'
+            'lastName' => 'People',
+            'active' => true
         ]);
     }
 }

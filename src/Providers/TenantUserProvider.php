@@ -11,13 +11,6 @@ use Soluto\MultiTenant\Database\TenantScope;
 class TenantUserProvider extends EloquentUserProvider
 {
     /**
-     * The name of the "password" attribute.
-     *
-     * @var string
-     */
-    protected $password;
-
-    /**
      * The name of the scope.
      *
      * @var string
@@ -33,21 +26,10 @@ class TenantUserProvider extends EloquentUserProvider
      * @param string|null $scope
      * @return void
      */
-    public function __construct(HasherContract $hasher, $model, $scope = null, $password = 'password')
+    public function __construct(HasherContract $hasher, $model, $scope = null)
     {
         parent::__construct($hasher, $model);
-        $this->password = $password;
         $this->scope = $scope;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function validateCredentials(UserContract $user, array $credentials)
-    {
-        $plain = $credentials[$this->getPassword()];
-
-        return $this->hasher->check($plain, $user->getAuthPassword());
     }
 
     /**
@@ -80,30 +62,28 @@ class TenantUserProvider extends EloquentUserProvider
      */
     public function retrieveByCredentials(array $credentials)
     {
-        if (empty($credentials)) {
+        if (empty($credentials) ||
+            (count($credentials) === 1 &&
+            array_key_exists('password', $credentials))) {
             return;
         }
 
-        $model = $this->createModel();
-        $query = $this->prepareQuery($model->newQuery());
+        $query = $this->createModel()->newQuery();
+        $query = $this->prepareQuery($this->createModel()->newQuery());
 
         foreach ($credentials as $key => $value) {
-            if (! Str::contains($key, $this->getPassword())) {
+            if (Str::contains($key, 'password')) {
+                continue;
+            }
+
+            if (is_array($value) || $value instanceof Arrayable) {
+                $query->whereIn($key, $value);
+            } else {
                 $query->where($key, $value);
             }
         }
 
         return $query->first();
-    }
-
-    /**
-     * Get the name of the "password" attribute.
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
     }
 
     /**
