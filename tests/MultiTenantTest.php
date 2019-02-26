@@ -51,7 +51,7 @@ class MultiTenantTest extends TestCase
     }
 
     /**
-     * @expectedException \Soluto\MultiTenant\Database\TenantException
+     * @expectedException \RuntimeException
      */
     public function testLoadDataWithGuestUser()
     {
@@ -59,7 +59,7 @@ class MultiTenantTest extends TestCase
     }
 
     /**
-     * @expectedException \Soluto\MultiTenant\Database\TenantException
+     * @expectedException \RuntimeException
      */
     public function testSaveDataWithGuestUser()
     {

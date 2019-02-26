@@ -2,6 +2,7 @@
 
 namespace Soluto\MultiTenant\Database;
 
+use RuntimeException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
@@ -19,7 +20,7 @@ class TenantScope implements Scope
         if ($user instanceof Tenant) {
             $builder->where($model->getQualifiedTenantName(), $user->getTenantId());
         } else {
-            throw new TenantException("Current user must implement Tenant interface");
+            throw new RuntimeException("Current user must implement Tenant interface");
         }
     }
 }

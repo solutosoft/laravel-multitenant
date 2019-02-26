@@ -3,6 +3,7 @@
 
 namespace Soluto\MultiTenant\Database;
 
+use RuntimeException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 
@@ -47,7 +48,7 @@ trait MultiTenant
             if ($valid) {
                 $this->setAttribute(Tenant::ATTRIBUTE_NAME, $user->getTenantId());
             } else {
-                throw new TenantException("Current user must implement Tenant interface");
+                throw new RuntimeException("Current user must implement Tenant interface");
             }
         }
     }
