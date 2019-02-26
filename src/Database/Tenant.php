@@ -22,11 +22,4 @@ interface Tenant
      * @return integer
      */
     public function getTenantId();
-
-    /**
-     * Whether the is root tenant.
-     *
-     * @return boolean whether tenant is master
-     */
-    public function isRoot();
 }
