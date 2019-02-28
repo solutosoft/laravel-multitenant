@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phpunit bootstrap="vendor/autoload.php"
-		colors="true"
-		verbose="true"
-		convertErrorsToExceptions="true"
-		convertNoticesToExceptions="true"
-		convertWarningsToExceptions="true"
-		stopOnFailure="false">
-		<testsuites>
-			<testsuite name="Soluto MultiTenant Tests">
-				<directory>./tests</directory>
-			</testsuite>
-		</testsuites>
+         colors="true"
+         verbose="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         stopOnFailure="false">
+  <testsuites>
+    <testsuite name="Soluto MultiTenant Tests">
+      <directory>./tests</directory>
+    </testsuite>
+  </testsuites>
+  <filter>
+    <whitelist processUncoveredFilesFromWhitelist="true">
+      <directory suffix=".php">./src</directory>
+    </whitelist>
+  </filter>
 </phpunit>
