@@ -24,16 +24,6 @@ trait MultiTenant
     }
 
     /**
-     * Get the table qualified tenant column name.
-     *
-     * @return string
-     */
-    public function getQualifiedTenantName()
-    {
-        return $this->getTable().'.'.Tenant::ATTRIBUTE_NAME;
-    }
-
-    /**
      * Sets tenant id column with current tenant
      *
      * @throws \Soluto\MultiTenant\Database\TenantException
