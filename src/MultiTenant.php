@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Soluto\MultiTenant\Database;
+namespace SolutoSoft\MultiTenant;
 
 use RuntimeException;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +26,7 @@ trait MultiTenant
     /**
      * Sets tenant id column with current tenant
      *
-     * @throws \Soluto\MultiTenant\Database\TenantException
+     * @throws \SolutoSoft\MultiTenant\TenantException
      */
     public function applyTenant()
     {

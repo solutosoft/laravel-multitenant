@@ -1,6 +1,6 @@
 <?php
 
-namespace Soluto\MultiTenant\Database;
+namespace SolutoSoft\MultiTenant;
 
 use RuntimeException;
 use Illuminate\Database\Eloquent\Builder;

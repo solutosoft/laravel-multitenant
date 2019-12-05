@@ -23,12 +23,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Soluto\\MultiTenant\\": "src/"
+      "SolutoSoft\\MultiTenant\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Soluto\\MultiTenant\\Test\\": "tests/"
+      "SolutoSoft\\MultiTenant\\Tests\\": "tests/"
     }
   },
   "extra": {

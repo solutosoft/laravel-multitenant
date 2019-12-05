@@ -1,6 +1,6 @@
 <?php
 
-namespace Soluto\MultiTenant\Test;
+namespace SolutoSoft\MultiTenant\Tests;
 
 use Illuminate\Database\Capsule\Manager;
 use Illuminate\Database\Eloquent\Model;

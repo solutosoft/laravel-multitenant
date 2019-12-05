@@ -68,8 +68,8 @@ any query by `tenant_id` column.
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
-use Soluto\MultiTenant\Database\MultiTenant;
-use Soluto\MultiTenant\Database\Tenant;
+use SolutoSoft\MultiTenant\MultiTenant;
+use SolutoSoft\MultiTenant\Tenant;
 
 class User extends Model implements Tenant
 {

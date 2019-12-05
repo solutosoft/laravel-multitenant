@@ -1,11 +1,11 @@
 <?php
 
-namespace Soluto\MultiTenant\Test\Models;
+namespace SolutoSoft\MultiTenant\Tests\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
-use Soluto\MultiTenant\Database\MultiTenant;
-use Soluto\MultiTenant\Database\Tenant;
+use SolutoSoft\MultiTenant\MultiTenant;
+use SolutoSoft\MultiTenant\Tenant;
 
 class Person extends Model implements Tenant
 {

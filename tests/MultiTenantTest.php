@@ -1,9 +1,8 @@
 <?php
 
-namespace Soluto\MultiTenant\Test;
+namespace SolutoSoft\MultiTenant\Tests;
 
-use Soluto\MultiTenant\Test\TestCase;
-use Soluto\MultiTenant\Test\Models\Person;
+use SolutoSoft\MultiTenant\Tests\Models\Person;
 use Illuminate\Support\Facades\Facade;
 
 class MultiTenantTest extends TestCase
@@ -12,7 +11,7 @@ class MultiTenantTest extends TestCase
     {
         $admin = Person::withoutTenant()->findOrFail(1);
 
-        $mock = $this->getMockBuilder(stdClass::class)
+        $mock = $this->getMockBuilder(\stdClass::class)
             ->setMethods(['guest', 'user'])
             ->getMock();
 
