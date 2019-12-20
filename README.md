@@ -3,8 +3,8 @@
 [![Build Status](https://travis-ci.org/solutosoft/laravel-multitenant.svg?branch=master)](https://travis-ci.org/solutosoft/laravel-multitenant)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/solutosoft/laravel-multitenant/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/solutosoft/laravel-multitenant/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/solutosoft/laravel-multitenant/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/solutosoft/laravel-multitenant/?branch=master)
-[![Total Downloads](https://poser.pugx.org/solutosoft/multitenant/downloads.png)](https://packagist.org/packages/solutosoft/multitenant)
-[![Latest Stable Version](https://poser.pugx.org/solutosoft/multitenant/v/stable.png)](https://packagist.org/packages/solutosoft/multitenant)
+[![Total Downloads](https://poser.pugx.org/solutosoft/laravel-multitenant/downloads.png)](https://packagist.org/packages/solutosoft/multitenant)
+[![Latest Stable Version](https://poser.pugx.org/solutosoft/laravel-multitenant/v/stable.png)](https://packagist.org/packages/solutosoft/multitenant)
 
 The **Shared Database** used by all tenants, means that we keep data from all the tenants in the same database. To isolate tenant specific data, we will have to add a discriminator column like `tenant_id` to every table which is tenant specific, and to make sure that all the queries and commands will filter the data based on it.
 
