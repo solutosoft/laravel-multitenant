@@ -19,11 +19,11 @@ The preferred way to install this library is through composer.
 
 Either run
 
-`composer require --prefer-dist solutosoft/multitenant "*"`
+`composer require --prefer-dist solutosoft/laravel-multitenant "*"`
 
 or add
 
-`"solutosoft/multitenant": "*"`
+`"solutosoft/laravel-multitenant": "*"`
 
 to the require section of your composer.json.
 
