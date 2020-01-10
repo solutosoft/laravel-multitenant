@@ -1,8 +1,8 @@
 <?php
 
-namespace SolutoSoft\MultiTenant\Tests;
+namespace Solutosoft\MultiTenant\Tests;
 
-use SolutoSoft\MultiTenant\Tests\Models\Person;
+use Solutosoft\MultiTenant\Tests\Models\Person;
 use Illuminate\Support\Facades\Facade;
 
 class MultiTenantTest extends TestCase

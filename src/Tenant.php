@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutoSoft\MultiTenant;
+namespace Solutosoft\MultiTenant;
 
 /**
  * Defines set of methods to be implemented by a tenant.
