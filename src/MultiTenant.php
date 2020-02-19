@@ -30,7 +30,6 @@ trait MultiTenant
      */
     public function applyTenant()
     {
-        /** @var Tenant $user */
         $user = Auth::user();
         $tenantId = $this->getAttribute(Tenant::ATTRIBUTE_NAME);
 

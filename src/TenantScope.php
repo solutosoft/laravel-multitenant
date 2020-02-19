@@ -20,10 +20,8 @@ class TenantScope implements Scope
 
         if ($user instanceof Tenant) {
             $builder->where($model->qualifyColumn(Tenant::ATTRIBUTE_NAME), $user->getTenantId());
-        } else {
-            if (!App::runningInConsole()) {
-                throw new RuntimeException("Current user must implement Tenant interface");
-            }
+        } else if (!App::runningInConsole()) {
+            throw new RuntimeException("Current user must implement Tenant interface");
         }
     }
 }
