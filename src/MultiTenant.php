@@ -6,7 +6,6 @@ namespace Solutosoft\MultiTenant;
 use RuntimeException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\App;
 
 trait MultiTenant
 {
@@ -16,15 +15,12 @@ trait MultiTenant
      */
     public static function bootMultiTenant()
     {
-        if (!App::runningInConsole()) {
+        static::addGlobalScope(new TenantScope());
 
-            static::addGlobalScope(new TenantScope());
-
-            static::creating(function(Model $model)
-            {
-                $model->applyTenant();
-            });
-        }
+        static::creating(function(Model $model)
+        {
+            $model->applyTenant();
+        });
     }
 
     /**
@@ -34,13 +30,12 @@ trait MultiTenant
      */
     public function applyTenant()
     {
-        /** @var TenantInterface $user */
+        /** @var Tenant $user */
         $user = Auth::user();
-        $valid =  (!Auth::guest() && $user instanceof Tenant);
         $tenantId = $this->getAttribute(Tenant::ATTRIBUTE_NAME);
 
         if (!$tenantId) {
-            if ($valid) {
+            if ($user instanceof Tenant) {
                 $this->setAttribute(Tenant::ATTRIBUTE_NAME, $user->getTenantId());
             } else {
                 throw new RuntimeException("Current user must implement Tenant interface");
