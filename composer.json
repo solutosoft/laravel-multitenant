@@ -1,7 +1,12 @@
 {
   "name": "solutosoft/laravel-multitenant",
   "description": "The multi tenant control with shared table",
-  "keywords": ["laravel", "multi-tenant", "eloquent", "database"],
+  "keywords": [
+    "laravel",
+    "multi-tenant",
+    "eloquent",
+    "database"
+  ],
   "homepage": "http://slto.com.br",
   "license": "BSD-3-Clause",
   "support": {
@@ -34,7 +39,7 @@
   },
   "extra": {
     "branch-alias": {
-        "dev-master": "1.0.x-dev"
+      "dev-master": "1.0.x-dev"
     }
-}
+  }
 }

@@ -6,6 +6,7 @@ namespace Solutosoft\MultiTenant;
 use RuntimeException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 trait MultiTenant
 {
@@ -15,12 +16,15 @@ trait MultiTenant
      */
     public static function bootMultiTenant()
     {
-        static::addGlobalScope(new TenantScope());
+        if (!App::runningInConsole()) {
 
-        static::creating(function(Model $model)
-        {
-            $model->applyTenant();
-        });
+            static::addGlobalScope(new TenantScope());
+
+            static::creating(function(Model $model)
+            {
+                $model->applyTenant();
+            });
+        }
     }
 
     /**

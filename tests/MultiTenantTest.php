@@ -7,6 +7,14 @@ use Illuminate\Support\Facades\Facade;
 
 class MultiTenantTest extends TestCase
 {
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $app = new ApplicationStub();
+        Facade::setFacadeApplication($app);
+    }
+
     public function testDataWithValidUser()
     {
         $admin = Person::withoutTenant()->findOrFail(1);
@@ -21,10 +29,9 @@ class MultiTenantTest extends TestCase
         $mock->method('guest')
              ->willReturn(false);
 
-        $app = new ApplicationStub();
+        /** @var $app ApplicationStub */
+        $app = Facade::getFacadeApplication();
         $app->setAttributes(['auth' => $mock]);
-
-        Facade::setFacadeApplication($app);
 
         $test = Person::create([
             'firstName' => 'Test',
@@ -81,11 +88,15 @@ class MultiTenantTest extends TestCase
 
 class ApplicationStub implements \ArrayAccess
 {
-    protected $attributes = [];
+
+    public function __construct ()
+    {
+        $this->attributes = ['app' => $this];
+    }
 
     public function setAttributes($attributes)
     {
-        $this->attributes = $attributes;
+        $this->attributes = array_merge($attributes, $this->attributes);
     }
 
     public function instance($key, $instance)
@@ -111,5 +122,10 @@ class ApplicationStub implements \ArrayAccess
     public function offsetUnset($key)
     {
         unset($this->attributes[$key]);
+    }
+
+    public function runningInConsole()
+    {
+        return false;
     }
 }
