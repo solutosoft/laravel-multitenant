@@ -1,4 +1,4 @@
-# Multi-Tenant
+# Laravel Multi Tenancy
 
 [![Build Status](https://travis-ci.org/solutosoft/laravel-multitenant.svg?branch=master)](https://travis-ci.org/solutosoft/laravel-multitenant)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/solutosoft/laravel-multitenant/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/solutosoft/laravel-multitenant/?branch=master)
