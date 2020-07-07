@@ -1,6 +1,12 @@
 Laravel Multi Tenancy Change Log
 ================================
 
+1.0.2 Jul 07, 2020
+------------------
+
+- Added `MultiTenant::disableTenantScope` property ([17d656a](https://github.com/solutosoft/laravel-multitenant/commit/17d656a6de790871d76b019476159c06883a5f34))
+
+
 1.0.1 Jun 14, 2020
 ------------------
 
