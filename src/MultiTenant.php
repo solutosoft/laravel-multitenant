@@ -7,15 +7,19 @@ use RuntimeException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property boolean $disableTenantScope
+ */
 trait MultiTenant
 {
-
     /**
      * @inheritdoc
      */
     public static function bootMultiTenant()
     {
-        static::addGlobalScope(new TenantScope());
+        if (!property_exists(get_called_class(), 'disableTenantScope') || !static::$disableTenantScope) {
+            static::addGlobalScope(new TenantScope());
+        }
 
         static::creating(function(Model $model)
         {

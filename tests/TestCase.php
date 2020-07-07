@@ -71,6 +71,13 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
             $table->string('active');
             $table->integer('tenant_id')->unsigned()->nullable(true);
         });
+
+        $this->getSchemaBuilder()->create('posts', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title');
+            $table->string('content');
+            $table->integer('tenant_id')->unsigned()->nullable(true);
+        });
     }
 
     /**
@@ -117,6 +124,20 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
                 'remember_token' => 'token-subtenant',
                 'active' => true,
                 'tenant_id' => 2
+            ]
+        ]);
+
+        $this->getConnection()->table('posts')->insert([
+            [
+                'id' => 1,
+                'title' => 'Post 1',
+                'content' => 'Content 1',
+                'tenant_id' => 1,
+            ],[
+                'id' => 2,
+                'title' => 'Post 2',
+                'content' => 'Content 2',
+                'tenant_id' => 2,
             ]
         ]);
     }

@@ -4,6 +4,8 @@ namespace Solutosoft\MultiTenant\Tests;
 
 use Solutosoft\MultiTenant\Tests\Models\Person;
 use Illuminate\Support\Facades\Facade;
+use RuntimeException;
+use Solutosoft\MultiTenant\Tests\Models\Post;
 
 class MultiTenantTest extends TestCase
 {
@@ -17,21 +19,7 @@ class MultiTenantTest extends TestCase
 
     public function testDataWithValidUser()
     {
-        $admin = Person::withoutTenant()->findOrFail(1);
-
-        $mock = $this->getMockBuilder(\stdClass::class)
-            ->setMethods(['guest', 'user'])
-            ->getMock();
-
-        $mock->method('user')
-             ->willReturn($admin);
-
-        $mock->method('guest')
-             ->willReturn(false);
-
-        /** @var $app ApplicationStub */
-        $app = Facade::getFacadeApplication();
-        $app->setAttributes(['auth' => $mock]);
+        $this->mockAuth();
 
         $test = Person::create([
             'firstName' => 'Test',
@@ -56,19 +44,23 @@ class MultiTenantTest extends TestCase
         $this->assertEquals(6, Person::withoutTenant()->count());
     }
 
-    /**
-     * @expectedException \RuntimeException
-     */
+    public function testDisabledTenantScope()
+    {
+        $this->mockAuth();
+        $this->assertEquals(2, Post::count());
+    }
+
     public function testLoadDataWithGuestUser()
     {
+        $this->expectException(RuntimeException::class);
+
         Person::all();
     }
 
-    /**
-     * @expectedException \RuntimeException
-     */
     public function testSaveDataWithGuestUser()
     {
+        $this->expectException(RuntimeException::class);
+
         $person = Person::forceCreate([
             'firstName' => 'Valid',
             'lastName' => 'With Guest User',
@@ -83,6 +75,25 @@ class MultiTenantTest extends TestCase
             'lastName' => 'People',
             'active' => true
         ]);
+    }
+
+    private function mockAuth()
+    {
+        $admin = Person::withoutTenant()->findOrFail(1);
+
+        $mock = $this->getMockBuilder(\stdClass::class)
+            ->setMethods(['guest', 'user'])
+            ->getMock();
+
+        $mock->method('user')
+             ->willReturn($admin);
+
+        $mock->method('guest')
+             ->willReturn(false);
+
+        /** @var $app ApplicationStub */
+        $app = Facade::getFacadeApplication();
+        $app->setAttributes(['auth' => $mock]);
     }
 }
 
