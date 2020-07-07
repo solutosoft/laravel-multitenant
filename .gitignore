@@ -4,8 +4,10 @@ nbproject
 .project
 .settings
 .vscode
+.phpunit.result.cache
 
 /storage
 /vendor
 
 composer.lock
+
