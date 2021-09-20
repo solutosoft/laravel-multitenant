@@ -52,7 +52,7 @@ jobs:
 
       - name: Execute tests
         continue-on-error: ${{ matrix.php > 8 }}
-        run: vendor/bin/phpunit --verbose
+        run: vendor/bin/phpunit --verbose --coverage-clover=coverage.clover
 
       - name: Upload coverage
         run: |
