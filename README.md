@@ -107,6 +107,83 @@ $users = App\User::where('active', 1)->get();
 
 $pet = Pet::create(['name' => 'Bob']);
 // insert into `pet` (`name`, 'tenant_id') values ('Bob', 1)
+```
+
+Auth Service provider
+---------------------
+
+It's necessary change the authentication service provider:
+
+1. Creates new file: `app/Providers/TenantUserProvider.php`
+
+```php
+
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Auth\EloquentUserProvider;
+use Solutosoft\MultiTenant\TenantScope;
+
+class TenantUserProvider extends EloquentUserProvider
+{
+
+    protected function newModelQuery($model = null)
+    {
+        return parent::newModelQuery($model)->withoutGlobalScope(TenantScope::class);
+    }
+
+}
+```
+
+1. Edit `app/Providers/AuthServiceProvider.php`
+
+```php
+
+<?php
+
+namespace App\Providers;
+
+class AuthServiceProvider extends ServiceProvider
+{
+    ...
+
+    /**
+     * Register any authentication / authorization services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        ...
+
+        Auth::provider('multitenant', function($app, $config) {
+            return new TenantUserProvider($app['hash'], $config['model']);
+        });
+    }
+}
+```
+
+3. Edit `config/auth.php`
+
+```php
+
+return [
+    ....
+    'providers' => [
+        'users' => [
+            'driver' => 'multitenant',
+            'model' => App\Models\User::class,
+        ],
+    ],
+
+    ...
+```
+
+
+
+
+
 
 
 
