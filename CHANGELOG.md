@@ -1,6 +1,11 @@
 Laravel Multi Tenancy Change Log
 ================================
 
+1.0.3 Sep 20, 2021
+------------------
+
+- Fixes security alerts
+
 1.0.2 Jul 07, 2020
 ------------------
 
