@@ -52,12 +52,7 @@ jobs:
 
       - name: Execute tests
         continue-on-error: ${{ matrix.php > 8 }}
-        run: vendor/bin/phpunit --verbose --coverage-clover=coverage.clover
-
-      - name: Upload coverage
-        run: |
-          wget https://scrutinizer-ci.com/ocular.phar
-          php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+        run: vendor/bin/phpunit --verbose
 
   windows_tests:
     runs-on: windows-latest
