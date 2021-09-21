@@ -107,7 +107,7 @@ $pet = Pet::create(['name' => 'Bob']);
 // insert into `pet` (`name`, 'tenant_id') values ('Bob', 1)
 ```
 
-Auth Service provider
+Auth Service Provider
 ---------------------
 
 It's necessary change the authentication service provider:
@@ -134,7 +134,7 @@ class TenantUserProvider extends EloquentUserProvider
 }
 ```
 
-1. Edit `app/Providers/AuthServiceProvider.php`
+2. Edit `app/Providers/AuthServiceProvider.php`
 
 ```php
 
