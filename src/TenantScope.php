@@ -19,7 +19,8 @@ class TenantScope implements Scope
         $user = Auth::user();
 
         if ($user instanceof Tenant) {
-            $builder->where($model->qualifyColumn(Tenant::ATTRIBUTE_NAME), $user->getTenantId());
+            $column = $user->getTenantColumn();
+            $builder->where($model->qualifyColumn($column), $user->getTenantId());
         } else if (!App::runningInConsole()) {
             throw new RuntimeException("Current user must implement Tenant interface");
         }

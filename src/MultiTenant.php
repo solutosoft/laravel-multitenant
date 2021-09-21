@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property boolean $disableTenantScope
+ *
  */
 trait MultiTenant
 {
@@ -28,6 +29,16 @@ trait MultiTenant
     }
 
     /**
+     * Get the name of the "tenant" column.
+     *
+     * @return string|null
+     */
+    public function getTenantColumn()
+    {
+        return self::TENANT_ID;
+    }
+
+    /**
      * Sets tenant id column with current tenant
      *
      * @throws \Solutosoft\MultiTenant\TenantException
@@ -35,11 +46,12 @@ trait MultiTenant
     public function applyTenant()
     {
         $user = Auth::user();
-        $tenantId = $this->getAttribute(Tenant::ATTRIBUTE_NAME);
+        $column = $this->getTenantColumn();
+        $tenantId = $this->getAttribute($column);
 
         if (!$tenantId) {
             if ($user instanceof Tenant) {
-                $this->setAttribute(Tenant::ATTRIBUTE_NAME, $user->getTenantId());
+                $this->setAttribute($column, $user->getTenantId());
             } else {
                 throw new RuntimeException("Current user must implement Tenant interface");
             }

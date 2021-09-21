@@ -34,6 +34,14 @@ class Person extends Model implements Tenant
     /**
      * @inheritdoc
      */
+    public function getTenantColumn()
+    {
+        return 'organization_id';
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function isRoot()
     {
         return $this->id === 1;

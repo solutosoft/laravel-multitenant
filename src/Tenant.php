@@ -14,7 +14,7 @@ interface Tenant
      *
      * @var string
      */
-    const ATTRIBUTE_NAME = 'tenant_id';
+    const TENANT_ID = 'tenant_id';
 
     /**
      * Get then tenant id
@@ -22,4 +22,12 @@ interface Tenant
      * @return integer
      */
     public function getTenantId();
+
+
+    /**
+     * Get the name of the "tenant" column.
+     *
+     * @return string|null
+     */
+    public function getTenantColumn();
 }

@@ -69,14 +69,14 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
             $table->string('password')->nullable();
             $table->string('remember_token')->nullable();
             $table->string('active');
-            $table->integer('tenant_id')->unsigned()->nullable(true);
+            $table->integer('organization_id')->unsigned()->nullable(true);
         });
 
         $this->getSchemaBuilder()->create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
             $table->string('content');
-            $table->integer('tenant_id')->unsigned()->nullable(true);
+            $table->integer('organization_id')->unsigned()->nullable(true);
         });
     }
 
@@ -92,7 +92,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
                 'id' => 1,
                 'firstName' => 'Admin',
                 'lastName' => 'Administrator',
-                'tenant_id' => null,
+                'organization_id' => null,
                 'login' => 'admin',
                 'password' => 'admin',
                 'active' => true,
@@ -105,7 +105,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
                 'password' => 'tenant1',
                 'remember_token' => 'token-tenant1',
                 'active' => false,
-                'tenant_id' => 1,
+                'organization_id' => 1,
             ],[
                 'id' => 3,
                 'firstName' => 'Tenant2',
@@ -114,7 +114,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
                 'password' => 'tenant2',
                 'remember_token' => 'token-tenant2',
                 'active' => true,
-                'tenant_id' => 1
+                'organization_id' => 1
             ],[
                 'id' => 4,
                 'firstName' => 'SubTenant1',
@@ -123,7 +123,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
                 'password' => 'subtenant',
                 'remember_token' => 'token-subtenant',
                 'active' => true,
-                'tenant_id' => 2
+                'organization_id' => 2
             ]
         ]);
 
@@ -132,12 +132,12 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
                 'id' => 1,
                 'title' => 'Post 1',
                 'content' => 'Content 1',
-                'tenant_id' => 1,
+                'organization_id' => 1,
             ],[
                 'id' => 2,
                 'title' => 'Post 2',
                 'content' => 'Content 2',
-                'tenant_id' => 2,
+                'organization_id' => 2,
             ]
         ]);
     }

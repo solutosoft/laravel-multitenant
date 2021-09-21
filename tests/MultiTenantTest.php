@@ -31,13 +31,13 @@ class MultiTenantTest extends TestCase
             'firstName' => 'Forced',
             'lastName' => 'Forced Last Name',
             'active' => true,
-            'tenant_id' => 2
+            'organization_id' => 2
         ]);
 
         $forced = Person::find($forced->id);
         $test = Person::find($test->id);
 
-        $this->assertEquals(1, $test->tenant_id);
+        $this->assertEquals(1, $test->organization_id);
         $this->assertNull($forced);
 
         $this->assertEquals(3, Person::count());
@@ -65,7 +65,7 @@ class MultiTenantTest extends TestCase
             'firstName' => 'Valid',
             'lastName' => 'With Guest User',
             'active' => true,
-            'tenant_id' => 1
+            'organization_id' => 1
         ]);
 
         $this->assertNotNull($person);
