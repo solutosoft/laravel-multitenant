@@ -1,6 +1,6 @@
 # Laravel Multi Tenancy
 
-[![Build Status](https://travis-ci.org/solutosoft/laravel-multitenant.svg?branch=master)](https://travis-ci.org/solutosoft/laravel-multitenant)
+[![Build Status](https://github.com/solutosoft/laravel-multitenant/actions/workflows/tests.yml/badge.svg)](https://github.com/solutosoft/laravel-multitenant/actions)
 [![Total Downloads](https://poser.pugx.org/solutosoft/laravel-multitenant/downloads.png)](https://packagist.org/packages/solutosoft/multitenant)
 [![Latest Stable Version](https://poser.pugx.org/solutosoft/laravel-multitenant/v/stable.png)](https://packagist.org/packages/solutosoft/multitenant)
 
