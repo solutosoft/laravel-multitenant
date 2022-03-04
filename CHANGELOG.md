@@ -1,12 +1,15 @@
 Laravel Multi Tenancy Change Log
 ================================
 
+1.0.5 Mar 21, 2022
+------------------
+
+- Fixes error getting tenant column name ([7a67e9d](https://github.com/solutosoft/laravel-multitenant/commit/7f217e89b47641af9fef61807b9f29c5bce39deb))
 
 1.0.4 Sep 21, 2021
 ------------------
 
 - Allow tenant column name customization ([7a67e9d](https://github.com/solutosoft/laravel-multitenant/commit/7a67e9def7b270c07a67a3c429f53f29b1e026c4))
-
 
 1.0.3 Sep 20, 2021
 ------------------
