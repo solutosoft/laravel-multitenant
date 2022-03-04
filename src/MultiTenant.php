@@ -35,7 +35,7 @@ trait MultiTenant
      */
     public function getTenantColumn()
     {
-        return self::TENANT_ID;
+        return Tenant::TENANT_ID;
     }
 
     /**
