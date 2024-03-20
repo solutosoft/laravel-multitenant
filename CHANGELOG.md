@@ -1,6 +1,12 @@
 Laravel Multi Tenancy Change Log
 ================================
 
+1.0.6 Mar 20, 2024
+------------------
+
+- Add support for laravel 9.0, 10.0  ([7f217e](https://github.com/solutosoft/laravel-multitenant/commit/43780dd865cd7b8b83bb8eeb226ab9ef69fd173d))
+
+
 1.0.5 Mar 21, 2022
 ------------------
 
